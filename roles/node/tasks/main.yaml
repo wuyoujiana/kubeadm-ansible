@@ -1,0 +1,7 @@
+- set_fact: cluster_join_script={{ hostvars[groups['master'][0]]['cluster_join_script'] }}
+  tags: node_join
+
+- name: Join kubernetes cluster
+  shell: echo '' | {{ cluster_join_script }}
+  when: cluster_join_script is defined
+  tags: node_join

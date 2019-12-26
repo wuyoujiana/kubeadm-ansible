@@ -1,0 +1,32 @@
+- name: Be sure kubectl is installed
+  yum: name={{item}} state=present
+  with_items:
+        - kubectl-{{version}}
+
+- name: copy kubeadm conf
+  template: src=kubeadm-init.yaml.j2 dest=/usr/etc/kubeadm-init.yaml
+
+- name: download images
+  shell: kubeadm config images pull --config /usr/etc/kubeadm-init.yaml
+
+- name: kubeadm init
+  shell: kubeadm init --config /usr/etc/kubeadm-init.yaml
+
+- name: Set cluster config
+  shell: HOME=~; sudo mkdir -p $HOME/.kube; sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config; sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+- name: Generate cluster join script
+  shell: kubeadm token create --print-join-command
+  register: cluster_join
+  tags: node_join
+
+- set_fact: cluster_join_script={{cluster_join.stdout}}
+  tags: node_join 
+
+- name: send yaml file
+  copy:
+    src=kube-flannel.yml
+    dest=/usr/etc/
+
+- name: set up cni
+  shell: kubectl apply -f /usr/etc/kube-flannel.yml
