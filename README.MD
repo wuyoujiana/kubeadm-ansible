@@ -1,6 +1,6 @@
 ### 中文说明在后面(＾＿＾）
 # Kubeadm Ansible Playbook
-Quickly build kubernetes cluster using Ansible with ansible. Tested:
+Quickly build kubernetes cluster using Ansible with kubeadm. Tested:
 - centos7
 
 # Features
