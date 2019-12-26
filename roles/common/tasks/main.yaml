@@ -2,7 +2,7 @@
   shell: /usr/sbin/swapoff -a
   tags: node_join
 - name: Be sure selinux is off
-  shell: /usr/sbin/setenforce 0
+  selinux: state=disabled
   tags: node_join
 - name: Stop and disable firewall
   service: name=firewalld state=stopped enabled=no

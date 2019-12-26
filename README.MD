@@ -31,7 +31,7 @@ gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 ```
 
 ## 2.add host information 
-The / etc / ansible / hosts host list is divided into three parts:
+The /etc/ansible/hosts host list is divided into three parts:
 - master: master node host
 - new_node: will be added to the node host
 - node: he node host that has joined the cluster
