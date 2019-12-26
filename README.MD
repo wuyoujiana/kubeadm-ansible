@@ -1,13 +1,13 @@
 ### 中文说明在后面(＾＿＾）
 # Kubeadm Ansible Playbook
-Quickly deploy a kubernetes cluster with ansible. Tested:
+Quickly build kubernetes cluster using Ansible with ansible. Tested:
 - centos7
 
-# features
+# Features
 - Quickly deploy a kubernetes cluster
 - Quickly joining of new node
 # Steps for usage
-## 1.Preparation before deployment
+## 1.preparation before deployment
 - Ansible host operates node host through the root
 ```
 yum install -y ansible
@@ -121,7 +121,7 @@ ansible-playbook -t node_join node_join_master.yml
 You can finish joining the cluster of the master
 
 ---
-#中文
+# 中文说明
 
 # Kubeadm Ansible Playbook
 用ansible快速地部署kubernetes集群，现已测试：
@@ -134,7 +134,7 @@ You can finish joining the cluster of the master
 ## 1.部署前准备
 - ansible通过root用户操作节点主机
 ```
-yum install ansible
+yum install -y ansible
 ```
 
 - 节点主机可通过yum安装kubernetes组件与docker-ce
@@ -196,7 +196,7 @@ Repository=registry.aliyuncs.com
 git clone https://github.com/wuyoujiana/kubeadm-ansible.git
 ```
 
-### 拷贝roles
+### 拷贝roles文件夹内容
 
 ```
 cd kubeadm-ansible

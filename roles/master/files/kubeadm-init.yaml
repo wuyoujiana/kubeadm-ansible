@@ -1,7 +1,0 @@
-apiVersion: kubeadm.k8s.io/v1beta2
-kind: ClusterConfiguration
-kubernetesVersion: v1.15.3
-imageRepository: 10.200.101.186/k8s
-networking:
-  podSubnet: 10.244.0.0/16
-  serviceSubnet: 10.245.0.0/16

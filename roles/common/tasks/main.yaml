@@ -1,6 +1,9 @@
 - name: Be sure swap is off
   shell: /usr/sbin/swapoff -a
   tags: node_join
+- name: Be sure selinux is off
+  shell: /usr/sbin/setenforce 0
+  tags: node_join
 - name: Stop and disable firewall
   service: name=firewalld state=stopped enabled=no
   tags: node_join
@@ -9,9 +12,6 @@
   tags: node_join
 - name: Make up sysctl file
   shell: sysctl --system
-  tags: node_join
-- name: hosts files
-  copy: src=hosts dest=/etc/ owner=root mode=600
   tags: node_join
 - name: Be sure docker,kubeadm,kubelet is installed
   yum: name={{item}} state=latest
@@ -26,7 +26,6 @@
 - name: harbor
   template: src=daemon.j2 dest=/etc/docker/daemon.json
   tags: node_join
-  tags: test
 - name: restart docker
   service: name=docker state=restarted enabled=yes
   with_items:
