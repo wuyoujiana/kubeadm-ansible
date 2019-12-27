@@ -1,0 +1,6 @@
+---
+- hosts: master,node
+  remote_user: root
+  tasks:
+  - name: Reset node
+    shell: kubeadm reset

@@ -6,6 +6,7 @@ Quickly build kubernetes cluster using Ansible with kubeadm. Tested:
 # Features
 - Quickly deploy a kubernetes cluster
 - Quickly joining of new node
+- Quickly delete kubernetes cluster
 # Steps for usage
 ## 1.preparation before deployment
 - Ansible host operates node host through the root
@@ -120,6 +121,11 @@ ansible-playbook -t node_join node_join_master.yml
 ```
 You can finish joining the cluster of the master
 
+# Delete cluster
+```
+ansible-playbook reset.yml
+```
+
 ---
 # 中文说明
 
@@ -129,7 +135,8 @@ You can finish joining the cluster of the master
 
 # 现有功能
 - 快速部署kubernetes集群
-- 新node节点快速加入
+- 快速新node节点快速加入
+- 快速重置删除集群
 # 使用步骤
 ## 1.部署前准备
 - ansible通过root用户操作节点主机
@@ -243,3 +250,11 @@ Repository=registry.aliyuncs.com
 ansible-playbook -t node_join node_join_master.yml
 ```
 即可完成加入到当前master的集群中
+
+# 删除集群
+```
+ansible-playbook reset.yml
+```
+
+
+
